@@ -1,5 +1,26 @@
 #! /bin/sh
 
 FILE=$1
+WINNINGNUMBERS=$2
 
-echo $FILE
+echo `cat $FILE`
+echo "Winning numbers:"
+echo `cat $WINNINGNUMBERS`
+
+INPUT=`cat $FILE`
+MATCHCOUNTER=0
+
+for i in {1..6}
+do	
+	NUMBER1=`awk -v i="$i" '{print$i}' $1`
+	NUMBER2=`awk -v i="$i" '{print$i}' $2`
+	if [ "$NUMBER1" == "$NUMBER2" ]
+	then
+		MATCHCOUNTER=$((MATCHCOUNTER+1))
+	fi
+done
+
+echo There were $MATCHCOUNTER matches.
+
+
+
