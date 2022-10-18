@@ -1,0 +1,19 @@
+#! /bin/sh
+
+RESULTS=
+
+for i in {1..5}
+	do 
+	      RESULT=`expr $RANDOM % 50`
+	      RESULTS=$RESULTS" "$RESULT
+       	done
+
+RESULT=`expr $RANDOM % 10`
+RESULTS=$RESULTS" "$RESULT
+
+echo $RESULTS
+
+DATE=`date +"%Y%m%d-%H:%M:%S"`
+
+echo $RESULTS > numbers.$DATE
+

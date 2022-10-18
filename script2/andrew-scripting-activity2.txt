@@ -1,0 +1,10 @@
+#! /bin/sh
+
+DATE=`date +%Y%m%d`
+
+#echo $DATE
+
+for f in ./scripts/*
+	do mv $f ${f}.$DATE
+	done
+

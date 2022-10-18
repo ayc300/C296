@@ -1,0 +1,8 @@
+#! /bin/sh
+
+uname
+date -R
+pwd
+ls | wc -l
+ls -lSr | tail -1
+
