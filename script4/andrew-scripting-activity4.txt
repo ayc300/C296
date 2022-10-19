@@ -1,0 +1,57 @@
+#! /bin/sh
+
+echo "enter password:"
+read INPUT
+echo "Length = ${#INPUT}"
+
+lowercase=0
+uppercase=0
+number=0
+
+
+for i in $(seq 1 ${#INPUT})
+do
+#	echo ${INPUT:i-1:1}
+	LETTER=${INPUT:i-1:1}
+	VALUE=`printf %d\\n \'$LETTER | head -c-1`
+#	echo $VALUE
+	if (( $VALUE >= 48 && $VALUE <= 57 ))
+	then
+		number=1
+	elif (( $VALUE >= 65 && $VALUE <= 90 ))
+	then
+		uppercase=1
+	elif (( $VALUE >= 97 && $VALUE <= 122 ))
+	then
+		lowercase=1
+	fi
+done
+
+if (( $number==1 )) 
+then
+	echo "Password contains numbers."
+else
+	echo "Password has no numbers."
+fi
+if (( $lowercase==1 ))
+then
+	echo "Password has letters."
+else
+	echo "Password has no letters."
+fi
+if (( $uppercase==1 )) 
+then
+	echo "Password has uppercase letters."
+else
+	echo "password has no uppercase letters."
+fi
+
+if (( ${#INPUT} < 8 )) 
+then
+	echo "Password is too short."
+fi
+
+
+
+
+
