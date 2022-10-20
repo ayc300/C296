@@ -1,0 +1,26 @@
+#! /bin/sh
+
+echo "Answer the questions with true or false only!"
+
+Counter=0
+
+for i in {1..10}
+do
+	echo `awk -F ',' '{print$1}' questions.txt | sed -n ${i}p`
+
+	read INPUT
+
+	if [ $INPUT = $(awk -F "," '{print$2}' questions.txt | sed -n ${i}p) ]
+	then
+		echo Right!
+		((Counter+=1))
+	else
+		echo Wrong!
+	fi
+done
+
+echo You got $Counter right out of 10
+
+
+
+

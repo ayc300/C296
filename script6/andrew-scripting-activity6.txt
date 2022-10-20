@@ -1,0 +1,29 @@
+#! /bin/sh
+
+NUMBER1=$1
+NUMBER2=$2
+
+if [ $# -lt 2 ]
+then
+        echo not enough parameters
+        exit 1
+fi
+
+if [ $# -gt 2 ]
+then
+        echo too many parameters
+        exit 1
+fi
+
+echo $1 $2
+
+
+if [ $1 -gt $2 ]
+then
+        echo True
+fi
+
+if [[ $1 -lt $2 || $1 -eq $2 ]]
+then
+        echo False
+fi

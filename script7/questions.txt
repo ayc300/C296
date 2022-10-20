@@ -1,0 +1,11 @@
+two plus two is 4,true
+three plus three is 9,false
+the state capital of florida is orlando,false
+christophe is a cool teacher,true
+the pronunciation of 雰囲気 is ふいんき,false
+florida is very humid,true
+the splattershot takes three hits to splat,true
+stick + gyro is better than just stick,true
+the carbon roller is great in salmon run, false
+i had no idea what to do with these questions, true
+

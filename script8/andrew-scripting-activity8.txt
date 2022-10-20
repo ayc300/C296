@@ -1,0 +1,16 @@
+#! /bin/sh
+
+function numberCheck() {
+	if [ ${INPUT} = "stop" ]
+	then
+		echo "stop entered"
+	elif [[ ${INPUT} =~ ^[0-9]+$ ]]
+	then
+        	echo "number entered"
+	fi
+}
+
+read INPUT
+numberCheck
+
+	
