@@ -1,16 +1,81 @@
 #! /bin/sh
 
 function numberCheck() {
-	if [ ${INPUT} = "stop" ]
+	if [[ ${INPUT} = "stop" ]]
 	then
 		echo "stop entered"
+		if [[ $INPUT_COUNT -gt 4 ]]
+		then
+			break
+		elif [[ $INPUT_COUNT -gt 10 ]]
+		then
+			break
+		elif [[ $INPUT_COUNT -lt 5 ]]
+		then
+			echo "not enough numbers"
+			exit 1
+		fi
 	elif [[ ${INPUT} =~ ^[0-9]+$ ]]
 	then
         	echo "number entered"
+	elif [[ ! ${INPUT} =~ ^[0-9]+$ ]]
+	then
+		echo "invalid command entered"
+		exit 1
 	fi
 }
 
-read INPUT
-numberCheck
+INPUT_COUNT=0
+declare -a INPUT_ARRAY
+#read INPUT
+for i in {1..10}
+do
+	echo "Enter at least 5 numbers and up to 10. Enter stop to end early."
+	read INPUT
+	numberCheck
+	((INPUT_COUNT+=1))
+	INPUT_ARRAY+=($INPUT)
+	#echo $INPUT_COUNT
 
-	
+done
+
+echo Your values = ${INPUT_ARRAY[@]}
+
+ARRAY_SUM=0
+for i in ${INPUT_ARRAY[@]}
+do
+	(( ARRAY_SUM += $i ))	
+done
+
+echo sum = $ARRAY_SUM
+
+PRODUCT_SUM=1
+for i in ${INPUT_ARRAY[@]}
+do 
+	(( PRODUCT_SUM *= $i ))
+done
+
+echo product = $PRODUCT_SUM
+
+AVERAGE=`echo $ARRAY_SUM / $INPUT_COUNT | bc -l`
+echo average = "$AVERAGE"
+
+MAX=${INPUT_ARRAY[0]}
+for i in "${INPUT_ARRAY[@]}"
+do
+	if [[ $i -gt $MAX ]]
+	then
+		MAX=$i
+	fi
+done
+echo max = $MAX
+
+MIN=${INPUT_ARRAY[0]}
+for i in "${INPUT_ARRAY[@]}"
+do
+	if [[ $i -lt $MIN ]]
+	then
+		MIN=$i
+	fi
+done
+echo min = $MIN
